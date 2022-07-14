@@ -71,7 +71,7 @@
 												<span class="badge badge-success">Diskon 10%</span><br>
 												<span class="badge badge-success">Kini Menjadi Rp. <?= number_format($value->jumlah_bayar - $diskon, 0) ?></span>
 											<?php } elseif ($value->pembayaran == 'DP') { ?>
-												<span class="badge badge-warning">Pembayaran Rp. <?= number_format($value->bayar, 0) ?></span>
+												<span class="badge badge-warning">Pembayaran Rp. <?= number_format((50 / 100) *$value->jumlah_bayar, 0) ?></span>
 											<?php }
 											?>
 										</td>
@@ -132,7 +132,12 @@
 							<tr>
 								<th>Total Bayar</th>
 								<th>:</th>
-								<td><?= number_format($value->bayar, 0) ?></td>
+								<td><?php if ($value->pembayaran == 'cashback') { ?>
+                                        <?= number_format($value->bayar, 0) ?>
+                                    <?php } elseif ($value->pembayaran == 'DP') { ?>
+                                        <?= number_format((50 / 100) * $value->jumlah_bayar, 0) ?>
+                                    <?php } ?>
+								</td>
 							</tr>
 							<tr>
 								<th>Catatan</th>
