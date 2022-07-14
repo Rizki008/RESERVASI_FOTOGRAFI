@@ -94,7 +94,7 @@
 														<span class="badge badge-success">Diskon 10%</span><br>
 														<span class="badge badge-success">Kini Menjadi Rp. <?= number_format($value->jumlah_bayar - $diskon, 0) ?></span>
 													<?php } elseif ($value->pembayaran == 'DP') { ?>
-														<span class="badge badge-warning">Pembayaran Rp. <?= number_format($value->bayar, 0) ?></span>
+														<span class="badge badge-warning">Pembayaran Rp. <?= number_format(($peresen / 100) * $value->jumlah_bayar, 0) ?></span>
 													<?php }
 													?>
 												</td>
