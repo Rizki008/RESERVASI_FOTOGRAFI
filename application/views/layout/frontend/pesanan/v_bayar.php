@@ -102,7 +102,12 @@
                         </div>
                         <div class="form-group">
                             <label>Jumlah Bayar</label>
-                            <input name="bayar" class="form-control" placeholder="Jumlah Bayar" required>
+                            <?php if ($pesanan->pembayaran == 'cashback') { ?>
+                                <input name="bayar" class="form-control" placeholder="Jumlah Bayar" required>
+                            <?php } elseif ($pesanan->pembayaran == 'DP') { ?>
+                                <input class="form-control" placeholder="<?= number_format((50 / 100) * $pesanan->jumlah_bayar, 0) ?>" readonly>
+                            <?php }
+                            ?>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Bukti Bayar</label>
